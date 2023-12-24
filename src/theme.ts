@@ -1,8 +1,13 @@
 import { CssVarsTheme, Theme, ThemeOptions, experimental_extendTheme as extendTheme } from '@mui/material/styles'
 // import { cyan, deepOrange, orange, teal } from '@mui/material/colors'
 
-type spacingFunction = (factor: number) => string
+const APP_BAR_HEIGHT: string = '58px'
+const BOARD_HEADER_HEIGHT: string = '60px'
+export const BOARD_CONTENT_HEIGHT: string = `calc(100vh - ${APP_BAR_HEIGHT} - ${BOARD_HEADER_HEIGHT})`
+const COLUMN_HEADER_HEIGHT: string = '50px'
+const COLUMN_FOOTER_HEIGHT: string = '56px'
 
+type spacingFunction = (factor: number) => string
 
 // Sử dụng module augmentation để thêm thuộc tính tùy chỉnh vào theme
 declare module '@mui/material/styles' {
@@ -10,6 +15,9 @@ declare module '@mui/material/styles' {
     trello: {
       appBarHeight: string;
       boardHeaderHeight: string;
+      boardContentHeight: string;
+      columnHeaderHeight: string;
+      columnFooterHeight: string;
     };
   }
 }
@@ -19,6 +27,9 @@ interface CustomThemeOptions extends ThemeOptions {
   trello?: {
     appBarHeight?: string
     boardHeaderHeight?: string
+    boardContentHeight?: string
+    columnHeaderHeight?: string
+    columnFooterHeight?: string
   };
   colorSchemes: {
     light: ThemeOptions,
@@ -30,8 +41,11 @@ const customSpacing: spacingFunction = (factor: number) => `${8 * factor}px`
 
 const themeOptions: CustomThemeOptions = {
   trello: {
-    appBarHeight: '58px',
-    boardHeaderHeight: '60px'
+    appBarHeight: APP_BAR_HEIGHT,
+    boardHeaderHeight: BOARD_HEADER_HEIGHT,
+    boardContentHeight: BOARD_CONTENT_HEIGHT,
+    columnHeaderHeight: COLUMN_HEADER_HEIGHT,
+    columnFooterHeight: COLUMN_FOOTER_HEIGHT
   },
   colorSchemes: {
     light: {
@@ -74,7 +88,7 @@ const themeOptions: CustomThemeOptions = {
             backgroundColor: '#19f5'
           }
         }
-      },
+      }
     },
     MuiButton: {
       styleOverrides: {
@@ -107,6 +121,15 @@ const themeOptions: CustomThemeOptions = {
       styleOverrides: {
         root: {
           fontSize: '0.875rem'
+        }
+      }
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          '&.MuiTypography-body1': {
+            fontSize: '0.875rem'
+          }
         }
       }
     }
