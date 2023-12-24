@@ -33,7 +33,7 @@ export default function ModeSelect() {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: '8px'
+              gap: 1
             }}
           >
             <LightModeIcon fontSize='small' /> Light
@@ -55,7 +55,7 @@ export default function ModeSelect() {
             sx={{
               display: 'flex',
               alignItems: 'center',
-              gap: 2
+              gap: 1
             }}
           >
             <SettingsBrightnessIcon fontSize='small' /> System

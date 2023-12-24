@@ -30,8 +30,8 @@ const customSpacing: spacingFunction = (factor: number) => `${8 * factor}px`
 
 const themeOptions: CustomThemeOptions = {
   trello: {
-    appBarHeight: '48px',
-    boardHeaderHeight: '58px'
+    appBarHeight: '58px',
+    boardHeaderHeight: '60px'
   },
   colorSchemes: {
     light: {
