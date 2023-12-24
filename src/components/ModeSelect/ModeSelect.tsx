@@ -5,15 +5,15 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import SettingsBrightnessIcon from '@mui/icons-material/SettingsBrightness'
 import Box from '@mui/material/Box'
 
-type ModeToggleProps = 'light' | 'dark' | 'system'
+type ModeSelectType = 'light' | 'dark' | 'system'
 
-export default function ModeToggle() {
+export default function ModeSelect() {
   // Sử dụng useColorScheme để lấy giá trị mode hiện tại
   // Sử dụng setMode để thay đổi giá trị mode
   const { mode, setMode } = useColorScheme()
 
   function handleChange(event: SelectChangeEvent) {
-    const modeSelected = event.target.value as ModeToggleProps
+    const modeSelected = event.target.value as ModeSelectType
     setMode(modeSelected)
   }
 

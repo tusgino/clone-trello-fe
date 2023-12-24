@@ -15,6 +15,7 @@ declare module '@mui/material/styles' {
 }
 
 interface CustomThemeOptions extends ThemeOptions {
+  // custom theme options với thuộc tính tùy chỉnh
   trello?: {
     appBarHeight?: string
     boardHeaderHeight?: string
