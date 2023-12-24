@@ -43,6 +43,7 @@ const themeOptions: CustomThemeOptions = {
       //     main: deepOrange[500]
       //   }
       // },
+
       spacing: customSpacing
     },
     dark: {
@@ -78,35 +79,35 @@ const themeOptions: CustomThemeOptions = {
     MuiButton: {
       styleOverrides: {
         root: {
-          textTransform: 'none'
+          textTransform: 'none',
+          borderWidth: '.5px',
+          '&:hover': {
+            borderWidth: '.5px'
+          }
         }
       }
     },
     MuiOutlinedInput: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          color: theme.palette.primary.main,
+        root: {
           fontSize: '0.875rem',
-          '.MuiOutlinedInput-notchedOutline': {
-            borderColor: theme.palette.primary.main
+          '& fieldset': {
+            borderWidth: '1px !important'
           },
-          '&:hover': {
-            '.MuiOutlinedInput-notchedOutline': {
-              borderColor: theme.palette.primary.main
-            }
+          '&:hover fieldset': {
+            borderWidth: '2px !important'
+          },
+          '&.Mui-focused fieldset': {
+            borderWidth: '2px !important'
           }
-          // '& fieldset': {
-          //   borderWidth: '1px !important'
-          // }
-        })
+        }
       }
     },
     MuiInputLabel: {
       styleOverrides: {
-        root: ({ theme }) => ({
-          color: theme.palette.primary.main,
+        root: {
           fontSize: '0.875rem'
-        })
+        }
       }
     }
   }
