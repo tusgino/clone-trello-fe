@@ -1,5 +1,5 @@
-import { ThemeOptions, experimental_extendTheme as extendTheme } from '@mui/material/styles'
-import { cyan, deepOrange, orange, teal } from '@mui/material/colors'
+import { CssVarsTheme, Theme, ThemeOptions, experimental_extendTheme as extendTheme } from '@mui/material/styles'
+// import { cyan, deepOrange, orange, teal } from '@mui/material/colors'
 
 type spacingFunction = (factor: number) => string
 
@@ -35,30 +35,83 @@ const themeOptions: CustomThemeOptions = {
   },
   colorSchemes: {
     light: {
-      palette: {
-        primary: {
-          main: teal[500]
-        },
-        secondary: {
-          main: deepOrange[500]
-        }
-      },
+      // palette: {
+      //   primary: {
+      //     main: teal[500]
+      //   },
+      //   secondary: {
+      //     main: deepOrange[500]
+      //   }
+      // },
       spacing: customSpacing
     },
     dark: {
-      palette: {
-        primary: {
-          main: cyan[500]
-        },
-        secondary: {
-          main: orange[500]
+      // palette: {
+      //   primary: {
+      //     main: cyan[500]
+      //   },
+      //   secondary: {
+      //     main: orange[500]
+      //   }
+      // },
+      spacing: customSpacing
+    }
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          '*::-webkit-scrollbar': {
+            width: '8px',
+            height: '8px'
+          },
+          '*::-webkit-scrollbar-thumb': {
+            backgroundColor: '#bdc3c7',
+            borderRadius: '8px'
+          },
+          '*::-webkit-scrollbar-thumb:hover': {
+            backgroundColor: '#19f5'
+          }
         }
       },
-      spacing: customSpacing
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none'
+        }
+      }
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.primary.main,
+          fontSize: '0.875rem',
+          '.MuiOutlinedInput-notchedOutline': {
+            borderColor: theme.palette.primary.main
+          },
+          '&:hover': {
+            '.MuiOutlinedInput-notchedOutline': {
+              borderColor: theme.palette.primary.main
+            }
+          }
+          // '& fieldset': {
+          //   borderWidth: '1px !important'
+          // }
+        })
+      }
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          color: theme.palette.primary.main,
+          fontSize: '0.875rem'
+        })
+      }
     }
   }
 }
 
-const theme = extendTheme(themeOptions)
+const theme: Omit<Theme, 'palette'> & CssVarsTheme = extendTheme(themeOptions)
 
 export default theme
