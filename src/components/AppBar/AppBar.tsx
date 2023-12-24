@@ -26,7 +26,9 @@ function AppBar() {
         height: (theme) => theme.trello.appBarHeight,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        gap: 2,
+        overflowX: 'auto'
       }}
     >
       <Box
@@ -45,7 +47,7 @@ function AppBar() {
             gap: 0.5
           }}
         >
-          <SvgIcon component={TrelloIcon} inheritViewBox />
+          <SvgIcon component={TrelloIcon} fontSize='small' inheritViewBox />
           <Typography
             variant='body1'
             component={'span'}
@@ -57,11 +59,21 @@ function AppBar() {
             Trello
           </Typography>
         </Box>
-        <Workspaces />
-        <Recent />
-        <Started />
-        <Template />
-        <Button variant='outlined'>Create</Button>
+        <Box
+          sx={{
+            display: {
+              xs: 'none',
+              md: 'flex',
+              gap: 1
+            }
+          }}
+        >
+          <Workspaces />
+          <Recent />
+          <Started />
+          <Template />
+          <Button variant='outlined'>Create</Button>
+        </Box>
       </Box>
       <Box
         sx={{
@@ -71,18 +83,27 @@ function AppBar() {
           color: 'primary.main'
         }}
       >
-        <TextField id='outlined-search' label='Search...' type='search' size='small' />
+        <TextField id='outlined-search' label='Search...' type='search' size='small' sx={{ minWidth: '120px' }} />
+
         <ModeSelect />
-        <Tooltip title='Notification'>
+        <Tooltip title='Notifications'>
           <IconButton>
             <Badge color='secondary' variant='dot'>
-              <NotificationsNoneIcon />
+              <NotificationsNoneIcon
+                sx={{
+                  color: 'primary.main'
+                }}
+              />
             </Badge>
           </IconButton>
         </Tooltip>
         <Tooltip title='Help'>
           <IconButton>
-            <HelpOutlineIcon />
+            <HelpOutlineIcon
+              sx={{
+                color: 'primary.main'
+              }}
+            />
           </IconButton>
         </Tooltip>
         <UserSetting />
